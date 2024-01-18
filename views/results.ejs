@@ -34,7 +34,7 @@
         <div class="navigator">
             <nav>
                 <div class="dropdown">
-                    <a class="active error-btn"><div>Errors </div><span class="show-spn"><i class="fa-solid fa-caret-down"></i><i class="fa-solid fa-caret-right"></i></span></a>
+                    <a class="active error-btn" data-l="<%= el %>"><div>Errors </div><span class="show-spn"><i class="fa-solid fa-caret-down"></i><i class="fa-solid fa-caret-right"></i></span></a>
                     <ul class="error-links">
                         <li class="show-all">Show All<span><%= el %></span></li>
                         <% if(result.issues.errors.empty_head.length > 0){ %>
@@ -74,17 +74,17 @@
                             <li>empty_head <span><%= result.issues.errors.empty_head.length %></span></li>
                         <% } %>
                         <% if(result.issues.errors.other.length > 0){ %>
-                            <li>empty_head <span><%= result.issues.errors.other.length %></span></li>
+                            <li>other <span><%= result.issues.errors.other.length %></span></li>
                         <% } %> 
                     </ul>
                 </div>
-                <a><div>Warnings</div><span><%= wl %></span></a>
-                <a><div>Notices</div><span><%= nl %></span></a>
+                <a data-l="<%= wl %>"><div>Warnings</div><span><%= wl %></span></a>
+                <a data-l="<%= nl %>"><div>Notices</div><span><%= nl %></span></a>
             </nav>
         </div>
         <div class="result-display">
-            <div class="errors">
-                <div class="accordian">
+            <div class="accordian">
+                <div class="errors">
                     <% if(result){ %>
                         <% if(result.issues.errors.empty_head.length > 0){ %>
                             <div class="empty_head">
@@ -241,41 +241,42 @@
                                     </div>
                                 <% }) %>
                             </div>
-                        <% } %>
+                        <% } %> 
                     <% } %>
                     
                 </div>
-            </div>
-            <div class="warnings">
-                <% if(result.issues.warnings.length > 0){ %>
-                    <div class="warns">
-                        <% result.issues.warnings.forEach( item => { %>
-                            <div class="content-box">
-                                <h3><%= item.code %></h3>
-                                <div class="text-content">
-                                    <div class="h4"><h4><%= item.context %></h4></div>
-                                    <p><%= item.message %></p>
+                <div class="warnings">
+                    <% if(result.issues.warnings.length > 0){ %>
+                        <div class="warns">
+                            <% result.issues.warnings.forEach( item => { %>
+                                <div class="content-box">
+                                    <h3><%= item.code %></h3>
+                                    <div class="text-content">
+                                        <div class="h4"><h4><%= item.context %></h4></div>
+                                        <p><%= item.message %></p>
+                                    </div>
                                 </div>
-                            </div>
-                        <% }) %>
-                    </div>
-                <% } %>
-            </div>
-            <div class="notices">
-                <% if(result.issues.notices.length > 0){ %>
-                    <div class="warns">
-                        <% result.issues.notices.forEach( item => { %>
-                            <div class="content-box">
-                                <h3><%= item.code %></h3>
-                                <div class="text-content">
-                                    <div class="h4"><h4><%= item.context %></h4></div>
-                                    <p><%= item.message %></p>
+                            <% }) %>
+                        </div>
+                    <% } %>
+                </div>
+                <div class="notices">
+                    <% if(result.issues.notices.length > 0){ %>
+                        <div class="warns">
+                            <% result.issues.notices.forEach( item => { %>
+                                <div class="content-box">
+                                    <h3><%= item.code %></h3>
+                                    <div class="text-content">
+                                        <div class="h4"><h4><%= item.context %></h4></div>
+                                        <p><%= item.message %></p>
+                                    </div>
                                 </div>
-                            </div>
-                        <% }) %>
-                    </div>
-                <% } %>
+                            <% }) %>
+                        </div>
+                    <% } %>
+                </div>
             </div>
+            
     </section>
 
 

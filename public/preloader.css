@@ -1,0 +1,67 @@
+/* HTML: <div class="loader"></div> */
+.loader {
+  z-index: 999;
+  width: 20px;
+  aspect-ratio: 1;
+  background: #2556b0;
+  box-shadow: 0 0 60px 15px #25b09b;
+  transform: translate(-80px);
+  clip-path: inset(0);
+  animation:
+    l4-1 0.5s ease-in-out infinite alternate,
+    l4-2 1s   ease-in-out infinite;
+}
+
+.stop-scrolling {
+  height: 100%;
+  overflow: hidden;
+}
+
+.loading-screen{
+  position: absolute;
+  background: #fff;
+  opacity: 0.9;
+  width: 100vw;
+  height: 100vh;
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  row-gap: 20px;
+  z-index: 999;
+  align-items: center;
+}
+
+.loading-screen h3{
+  font-weight: 500;
+}
+
+.loading-screen button{
+  padding: 10px 24px;
+  outline: none;
+  background-color: #0066FF;
+  border: none;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #fff;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: 0.2s ease-in;
+}
+
+.loading-screen h3.scan-success{
+  color: #33b033;
+  display: none;
+}
+
+.loading-screen button:hover{
+  background-color: #4FACF7;
+}
+
+@keyframes l4-1 {
+  100% {transform: translateX(80px)}
+}
+@keyframes l4-2 {
+   33% {clip-path: inset(0 0 0 -100px)}
+   50% {clip-path: inset(0 0 0 0)     }
+   83% {clip-path: inset(0 -100px 0 0)}
+}

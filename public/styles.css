@@ -127,9 +127,10 @@ header .navbar ul li a:hover{
 .showcase section.container #form input{
     outline: none;
     border: none;
-    padding: 10px 20px;
+    padding: 20px 30px;
+    width: 70%;
     background: #c6c6c6;
-    font-size: 1rem;
+    font-size: 1.2rem;
     margin: 20px 0; 
     border-top-left-radius: 10px;
 }
@@ -140,8 +141,8 @@ header .navbar ul li a:hover{
 }
 
 .showcase section.container #form button{
-    padding: 10px 24px;
-    font-size: 1rem;
+    padding: 20px 24px;
+    font-size: 1.2rem;
     font-weight: 600;
     border: none;
     background: var(--dark-color);
@@ -153,6 +154,14 @@ header .navbar ul li a:hover{
 
 .showcase section.container #form button:hover{
     background: var(--light-color);
+}
+
+form small.error-msg{
+    width: 100%;
+    color: #cd3939;
+    display: block;
+    padding: 10px;
+    font-size: 0.8rem;
 }
 
 
@@ -528,19 +537,21 @@ section.results{
     font-size: 1.1rem;
 }
 
+.results nav a:first-child div{
+    padding: 9px;
+}
+
 .results nav a.active{
     background-color: #96b6e8;
     color: #fff;
 }
 
 .results nav a span{
-    padding: 5px;
+    padding: 10px;
     font-size: 16px;
     text-align: center;
-    width: 33px;
-    height: 33px;
     background: #d26666;
-    border-radius: 50%;
+    border-radius: 10px;
     margin-left: 5px;
 }
 
@@ -579,8 +590,13 @@ section.results{
     cursor: pointer;
 }
 
+
+
 .dropdown .error-links li span{
     padding: 10px;
+    min-width: 40px;
+    text-align: center;
+    margin-left: 50px;
     background-color: #d26666;
     margin: 5px 0;
     border-radius: 10px;
@@ -617,6 +633,10 @@ section.results{
     grid-column: 2/3;
     background-color: #96b6e8;
     overflow-y: scroll;
+}
+
+.result-display .warnings, .result-display .notices{
+    display: none;
 }
 
 .results .accordian{
@@ -804,6 +824,7 @@ section.results{
    }
 
    .showcase section.container #form input{
+    padding: 10px 20px;
     width: 90%;
    }
 
@@ -816,6 +837,7 @@ section.results{
    }
 
    .showcase section.container #form button{
+    padding: 10px 24px;
         background-color: #82b7e3;
    }
 

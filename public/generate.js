@@ -1,15 +1,49 @@
 const links = document.querySelectorAll('.results .navigator nav a');
-const resultDisplay = document.querySelector('.result-display');
+const resultDisplay = document.querySelector('.result-display .accordian');
+const errBtn = document.querySelector('.results .dropdown .error-btn.active');
+const errLinks = document.querySelector('.results .dropdown .error-links');
+const errSpan = document.querySelector('.results .dropdown .error-btn span');
+const results = document.querySelectorAll('.result-display .accordian .errors > div');
 const allResults = Array.from(resultDisplay.children);
 
+
+
 links.forEach(link => {
+
     link.addEventListener('click', e => {
-        removeActive();
-        link.classList.add('active');
-    })
+        if(!link.classList.contains('active')){
+            removeActive();
+
+            errLinks.classList.remove('show-drp');
+            errSpan.classList.remove('show-spn');
+            
+            link.classList.add('active');
+            allResults.forEach(res => {
+                if(res.classList.contains(link.textContent.replace(/[^A-Za-z]/g, '').toLowerCase())){
+                    res.style.display = 'block';
+                }
+            })
+        }
+    })  
 })
 
+errBtn.addEventListener('click', e => {   
+
+    errLinks.classList.toggle('show-drp');
+    errSpan.classList.toggle('show-spn');    
+})
+
+function removeResults(){
+    allResults.forEach(res => {
+        res.style.display = 'none';
+    })
+}
+
+
+
+
 function removeActive(){
+    removeResults();
     links.forEach(link => {
         link.classList.remove('active');
     })
@@ -23,46 +57,50 @@ accordians.forEach(acc => {
     })
 })
 
-const ctx = document.getElementById('doughnut');
 
-new Chart(ctx, {
-  type: 'doughnut',
-  data: {
-    labels: ['Errors', 'Warnings', 'Notices'],
-    datasets: [{
-      label: '',
-      data: [1, 0, 0],
-      backgroundColor: ['red', 'magenta', 'orange', 'green'],
-      borderWidth: 1
-    }]
-  },
-  options: {
-    scales: {
-      y: {
-        beginAtZero: true
-      }
-    }
-  }
-});
+function makeChart(){
+    const ctx = document.getElementById('doughnut');
 
+    const errnos = [];
 
-const errBtn = document.querySelector('.results .dropdown .error-btn.active');
-const errLinks = document.querySelector('.results .dropdown .error-links');
-const errSpan = document.querySelector('.results .dropdown .error-btn span');
-const results = document.querySelectorAll('.result-display .accordian > div');
+    links.forEach( link => {
+        errnos.push(Number(link.dataset.l.replace(/\D/g, '')))
+    })
 
-errBtn.addEventListener('click', e => {
-    errLinks.classList.toggle('show-drp');
-    errSpan.classList.toggle('show-spn');
-})
+    new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+          labels: ['Errors', 'Warnings', 'Notices'],
+          datasets: [{
+            label: '',
+            data: [errnos[0], errnos[1], errnos[2]],
+            backgroundColor: ['red', 'magenta', 'orange', 'green'],
+            borderWidth: 1
+          }]
+        },
+        options: {
+          scales: {
+            y: {
+              beginAtZero: true
+            }
+          }
+        }
+    });
+}
+
+makeChart();
+
 
 Array.from(errLinks.children).forEach( child => {
     child.addEventListener('click', e => {
+        e.preventDefault();
         const name_class = child.textContent.split(' ')[0];
         showAll();
+        
         if(!child.classList.contains('show-all')){
             results.forEach(result => {
                 if(!result.classList.contains(name_class)){
+                    console.log(result);
                     result.style.display = 'none';
                 }   
             })

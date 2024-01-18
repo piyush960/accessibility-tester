@@ -23,10 +23,6 @@ app.use(express.static('public'));
 app.use(express.json());
 
 app.get('/', (req, res) => {
-
-    Report.deleteMany({})
-    .then(result => console.log('all deleted'))
-    .catch(e => console.log(e));
     res.status(200).render('home');
 })
 
@@ -100,23 +96,26 @@ function parseData(data){
 
 app.post('/results', async (req, res) => {
     const { url } = req.body;
-    const result = await pa11y(url , {
-        screenCapture: `${__dirname}/my-screen-capture.png`,
-        includeNotices: true,
-        includeWarnings: true,
-    })
-    const report = parseData(result);
-    result.issues = report;
+    
 
     try{
-        const report = await Report.create({ result });
-        res.status(200).json({ result });
+        const result = await pa11y(url , {
+            screenCapture: `${__dirname}/my-screen-capture.png`,
+            includeNotices: true,
+            includeWarnings: true,
+        })
+        const report = parseData(result);
+        result.issues = report;
+        await Report.create({ result });
+        res.status(200).json({success: true});
     }catch(e){
         console.log(e);
-        res.status(400).json({ msg: "failed to create report" });
+        res.status(400).json({ msg: e.message });
     }
 
 })
+
+
 
 app.get('/results', async (req, res) => {
 
