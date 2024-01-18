@@ -37,8 +37,10 @@
     box-sizing: border-box;
 }
 
-body{
+html, body{
     font-family: 'Poppins', sans-serif;
+    overflow-x: hidden !important;
+    margin: auto !important;
 }
 
 ul{
@@ -470,7 +472,7 @@ section.page-info{
     text-align: center;
 }
 
-.page-info .chart canvas{
+.page-info .chart{
     width: 300px;
     height: 300px;
     border-top-left-radius: 20px;
@@ -542,6 +544,75 @@ section.results{
     margin-left: 5px;
 }
 
+.dropdown{
+    position: relative;
+    width: 100%;
+}
+
+.dropdown .error-links{
+    position: absolute;
+    top: 100%;
+    left: 5%;
+    background: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);  
+    opacity: 0;
+    transform: translateY(10px);
+    z-index: 100;
+    pointer-events: none;
+    transition: 0.2s ease-in-out;
+}
+
+
+.dropdown .error-links.show-drp{
+    opacity: 1;
+    transform: translateY(0px);
+    pointer-events: auto;
+}
+
+.dropdown .error-links li{
+    padding: 0 15px;
+    border-bottom: 1px solid #000;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    cursor: pointer;
+}
+
+.dropdown .error-links li span{
+    padding: 10px;
+    background-color: #d26666;
+    margin: 5px 0;
+    border-radius: 10px;
+    font-size: 15px;
+}
+
+.dropdown .error-btn span{
+    background: none;
+    padding: 0;
+}
+.dropdown .error-btn span i{
+    height: 100%;
+    margin-top: 9px;
+}
+
+.dropdown .error-btn span i:last-child, .dropdown .error-btn span.show-spn i:first-child{
+    display: none;
+}
+
+.dropdown .error-btn span.show-spn i:last-child{
+    display: block;
+}
+
+.dropdown .error-links li:last-child{
+    border: none;
+}
+
+
+.dropdown .error-links li:hover{
+    background: #4FACF7;
+}
+
 .results .result-display{
     grid-column: 2/3;
     background-color: #96b6e8;
@@ -562,7 +633,9 @@ section.results{
     font-weight: 500;
     padding: 10px;
     background: #0066FF;
+    overflow-wrap: break-word;
     color: #fff;
+    z-index: 1;
     cursor: pointer;
 }
 
@@ -570,7 +643,9 @@ section.results{
     content: "+";
     position: absolute;
     top: 50%;
+    margin-left: 50px;
     right: 20px;
+    z-index: 2;
     transform: translateY(-50%);
     font-size: 1.2rem;
     font-weight: 400;
@@ -584,6 +659,27 @@ section.results{
     color: #fff;
     transition: 0.4s ease-in;
     overflow-y: auto;
+}
+
+.accordian .content-box .h4{
+    width: fit-content;
+    margin: 10px 0;
+    margin-left: 10px;
+    word-break: break-all;
+}
+
+.accordian .content-box h4{
+    width: 100%;
+    padding: 10px 20px;
+    background: #333;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.accordian .content-box p{
+    margin: 0 10px;
+    font-size: 0.9rem;
 }
 
 .accordian .content-box.active .text-content{
@@ -649,6 +745,7 @@ section.results{
 
     .choose .container{
         display: flex;
+
     }
 
     .text-content .content1, .text-content .content2, .text-content .content3{
@@ -683,10 +780,12 @@ section.results{
         line-height: 1.5;
         width: 400px;
     }
+    .accordian .content-box .h4{
+        margin-left: 0;
+    }
 }
 
-@media (max-width: 500px){
-    
+@media (max-width: 520px){
 
    .showcase{
         background-image: none;
@@ -777,6 +876,14 @@ section.results{
     margin-top: 20px;
    }
 
+   .features div{
+    width: 100%;
+    text-align: center;
+   }
+   .features div h2{
+    width: 100%;
+   }
+
    .importance{
     height: auto;
    }
@@ -791,7 +898,12 @@ section.results{
     text-align: center;
    }
 
+   .choose .container img{
+    width: 80%;
+   }
+
    .choose .text-content{
+    width: 100%;
     margin-top: 20px;
     row-gap: 10px;
    }
@@ -812,10 +924,11 @@ section.results{
    }
 
 
-   .page-info .chart canvas{
+   .page-info .chart{
     width: 80%;
-
+    object-fit: contain;
    }
+
 
    section.results{
     display: block;
@@ -830,11 +943,21 @@ section.results{
     row-gap: 0;
     padding: 0;
     overflow-x: scroll;
+    overflow-y: hidden;
    }
 
    
     .results nav::-webkit-scrollbar{
         display: none;
+    }
+
+    
+    .dropdown .error-links.show-drp{
+        position: relative;
+    }
+
+    .accordian .content-box h3{
+        font-size: 0.9rem;
     }
 
     .text-content .content1, .text-content .content2, .text-content .content3{
