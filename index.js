@@ -2,8 +2,11 @@ const express = require('express');
 const dotenv = require('dotenv');
 const pa11y = require('pa11y');
 const mongoose = require('mongoose');
+const cookieParser = require('cookie-parser');
+const { requireAuth, checkUser } = require('./middleware/authMiddleware');
 const app = express();
 dotenv.config();
+const authRoutes = require('./routes/authRoutes');
 const Report = require('./models/reports');
 
 
@@ -21,9 +24,25 @@ mongoose.connect(MONGO_URI)
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
 app.use(express.json());
+app.use(cookieParser());
+app.use(authRoutes);
 
-app.get('/', (req, res) => {
+app.get('*', checkUser);
+
+app.get('/', async (req, res) => {
+    await Report.deleteMany({ userid: { $exists: false } });
     res.status(200).render('home');
+})
+
+app.get('/history', requireAuth, async (req, res) => {
+    const userid = res.locals.user._id;
+    
+    try{
+        const reports = await Report.find({ userid });
+        res.status(200).render('history', { reports });
+    }catch(e){
+        console.log(e);
+    }
 })
 
 function parseData(data){
@@ -94,9 +113,11 @@ function parseData(data){
 }
 
 
-app.post('/results', async (req, res) => {
+app.post('/results', checkUser, async (req, res) => {
     const { url } = req.body;
-    
+    if(res.locals.user){
+        userid = res.locals.user._id;
+    }
 
     try{
         const result = await pa11y(url , {
@@ -104,10 +125,16 @@ app.post('/results', async (req, res) => {
             includeNotices: true,
             includeWarnings: true,
         })
+        const name = result.documentTitle;
         const report = parseData(result);
         result.issues = report;
-        await Report.create({ result });
-        res.status(200).json({success: true});
+        if(res.locals.user){
+            await Report.findOneAndUpdate({ result, userid, name}, {}, {upsert: true});
+        }else{
+            await Report.create({result, name});
+        }
+
+        res.status(200).json({success: true, name});
     }catch(e){
         console.log(e);
         res.status(400).json({ msg: e.message });
@@ -115,16 +142,39 @@ app.post('/results', async (req, res) => {
 
 })
 
-
-
-app.get('/results', async (req, res) => {
-
+app.get('/results/', async (req, res) => {
+    
+    const name = req.query.name;
     try{
-        const result = await Report.findOne().sort({ createdAt: -1 });
-        res.status(200).render('results', {result: result.result, el: result.result.issues.el, nl: result.result.issues.notices.length, wl: result.result.issues.warnings.length});
+        if(res.locals.user){
+            const userid = res.locals.user._id;
+            const result = await Report.findOne({userid, name }).sort({ createdAt: -1 });
+            res.status(200).render('results', {result: result.result, el: result.result.issues.el, nl: result.result.issues.notices.length, wl: result.result.issues.warnings.length});
+        }else{
+            const result = await Report.findOne({ name }).sort({ createdAt: -1 });
+            res.status(200).render('results', {result: result.result, el: result.result.issues.el, nl: result.result.issues.notices.length, wl: result.result.issues.warnings.length});
+        }
     }catch(e){
         console.log(e);
         res.send('page not found');
     }
+})
 
+app.delete('/history', checkUser, async (req, res) => {
+    const userid = res.locals.user._id;
+    const name = req.body.name;
+    console.log(name);
+    try{
+        await Report.findOneAndDelete({ name, userid });
+        
+        res.json({ name, success: true });
+    }catch(e){
+        console.log(e);
+        res.json({ success: false });
+    }  
+})
+
+
+app.get('*', (req, res) => {
+    res.status(404).send('page not found');
 })

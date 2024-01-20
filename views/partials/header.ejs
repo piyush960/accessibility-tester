@@ -1,0 +1,16 @@
+<header>
+    <div class="container">
+        <a href="/"><h2 class="logo">Acc<span>Tester</span></h2></a>
+        <nav class="navbar">
+            <ul>
+                <li><a href="/" class="home">Home</a></li>
+                <li><a href="/history" class="history">History</a></li>
+                <% if(user){ %>
+                    <li><a href="/logout">Logout</a></li>
+                <% }else{ %>
+                    <li><a href="/login">Login</a></li>
+                <% } %>
+            </ul>
+        </nav>
+    </div>
+</header>

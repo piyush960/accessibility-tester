@@ -19,18 +19,7 @@
     </div>
     
     <div class="showcase">
-        <header>
-            <div class="container">
-                <a href="/"><h2 class="logo">Acc<span>Tester</span></h2></a>
-                <nav class="navbar">
-                    <ul>
-                        <li><a id="/results">Home</a></li>
-                        <li><a href="">History</a></li>
-                        <li><a href="">Login</a></li>
-                    </ul>
-                </nav>
-            </div>
-        </header>
+        <%- include('./partials/header') %>
         <section class="container">
             <div class="left-content" data-aos="fade-up" data-aos-anchor-placement="center-bottom">
                 <h1>Welcome to AccessCheck</h1>
@@ -168,6 +157,7 @@
     </footer> 
     
     <script src="home.js"></script>
+    <script src="main.js"></script>
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
         AOS.init({

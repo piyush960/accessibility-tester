@@ -38,6 +38,7 @@
 }
 
 html, body{
+    max-width: 100%;
     font-family: 'Poppins', sans-serif;
     overflow-x: hidden !important;
     margin: auto !important;
@@ -77,6 +78,7 @@ header .container{
     display: flex;
     justify-content: space-between;
     align-items: center;
+    
 }
 
 a .logo{
@@ -95,8 +97,15 @@ header .navbar ul{
 
 header .navbar ul li a{
     margin-left: 100px;
+    color: #fff;
     transition: color 0.2s ease-in-out;
 }
+
+header .navbar ul li a.current{
+    color: var(--light-color);
+    
+}
+
 
 header .navbar ul li a:hover{
     color: var(--light-color);
@@ -127,9 +136,10 @@ header .navbar ul li a:hover{
 .showcase section.container #form input{
     outline: none;
     border: none;
-    padding: 20px 30px;
+    padding: 17px 30px;
     width: 70%;
     background: #c6c6c6;
+    font-family: 'Poppins', sans-serif;
     font-size: 1.2rem;
     margin: 20px 0; 
     border-top-left-radius: 10px;
@@ -409,7 +419,25 @@ form small.error-msg{
     background-position: center;
     background-size: cover;
     color: #fff;
+    background-color: #0066FF;
 }
+
+.footer.current{
+    height: 600px;
+}
+
+.footer .container{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.footer.current .container{
+    min-height: calc(100vh - 600px);
+}
+
 
 .footer h2{
     font-size: 1.8rem;
@@ -438,13 +466,7 @@ form small.error-msg{
 }
 
 
-.footer .container{
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-end;
-}
+
 
 .footer .container small{
     font-size: 1rem;
@@ -475,10 +497,9 @@ form small.error-msg{
 section.page-info{
     height: 400px;
     width: 100%;
-    display: grid;
-    grid-template-columns: 1fr 0.4fr;
-    grid-template-rows: 1fr 0.2fr;
-    text-align: center;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
 }
 
 .page-info .chart{
@@ -657,6 +678,15 @@ section.results{
     color: #fff;
     z-index: 1;
     cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    column-gap: 10px;
+}
+
+.accordian .content-box h3 span{
+    margin-right: 29px;
+    word-break: break-all;
 }
 
 .accordian .content-box h3::before{
@@ -664,7 +694,7 @@ section.results{
     position: absolute;
     top: 50%;
     margin-left: 50px;
-    right: 20px;
+    right: 18px;
     z-index: 2;
     transform: translateY(-50%);
     font-size: 1.2rem;
@@ -712,6 +742,106 @@ section.results{
     content: "-";
 }
 
+/* History Page */
+
+section.history{
+    margin: 40px auto;
+}
+
+.history .hist-cards{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    row-gap: 20px;
+}
+
+.history .hist-cards .hist-card{
+    margin: 0 20px;
+    background: #fff;
+    max-width: 350px;
+    padding: 10px;
+    border-radius: 10px;
+    min-height: 210px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
+    transition: transform 0.2s ease-in-out;
+    position: relative;
+}
+
+.history .hist-cards .hist-card:hover{
+    transform: translateY(-4px);
+}
+
+.hist-card h3{
+    margin: 10px 0;
+    font-weight: 500;
+    font-size: 1.2rem;
+    width: 86%;
+}
+
+.hist-card > p{
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+}
+
+.hist-card > p span{
+    color: #999;
+}
+
+.hist-card .summary{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    column-gap: 10px;
+    row-gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+}
+
+.hist-card .summary i{
+    font-size: 8px;
+    vertical-align: middle;
+    margin-right: 5px;
+}
+
+.hist-card .summary p:first-child i{
+    color: red;
+    border: 1px solid #333;
+    border-radius: 50%;
+}
+
+.hist-card .summary p:nth-child(2) i{
+    color: orange;
+    border: 1px solid #333;
+    border-radius: 50%;
+}
+
+.hist-card .summary p:last-child i{
+    color: yellow;
+    border: 1px solid #333;
+    border-radius: 50%;
+}
+
+.hist-card a{
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+.hist-card a:hover i{
+    padding-left: 5px;
+}
+
+.hist-card a.remove i{
+    position: absolute;
+    top: 5%;
+    right: 5%;
+    padding: 10px;
+    background: #cd3939;
+    color: #fff;
+    border-radius: 10px;
+}
 
 @media (max-width: 900px){
 
@@ -803,6 +933,11 @@ section.results{
     .accordian .content-box .h4{
         margin-left: 0;
     }
+
+    .history .hist-cards{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
 @media (max-width: 520px){
@@ -813,6 +948,10 @@ section.results{
         height: auto;
    }
 
+   header .navbar ul li a.current, header .navbar ul li a:hover{
+        color: #fff;
+    
+    }
    
 
    .showcase section.container h1, .showcase section.container p{
@@ -870,7 +1009,8 @@ section.results{
     margin: 0;
     padding: 10px 20px;
     background-color: #4FACF7;
-}
+    border-radius: 10px;
+    }
 
    .showcase section.container img{
         width: 80%;
@@ -907,7 +1047,13 @@ section.results{
    }
 
    .importance{
-    height: auto;
+    height: fit-content;
+    overflow-x: hidden;
+    /* overflow-y: hidden; */
+   }
+
+   .importance .container{
+    height: 100%;
    }
  
     .importance .container ul li{
@@ -921,7 +1067,7 @@ section.results{
    }
 
    .choose .container img{
-    width: 80%;
+    max-width: 300px;
    }
 
    .choose .text-content{
@@ -984,6 +1130,7 @@ section.results{
 
     .text-content .content1, .text-content .content2, .text-content .content3{
         height: auto;
+        max-width: 300px;
     } 
 
     .footer h2{
@@ -997,6 +1144,16 @@ section.results{
 
     .footer .container small{
         font-size: 0.8rem;
+    }
+
+
+    .history .hist-cards{
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .hist-cards .hist-card{
+        width: 300px;
     }
 
 }

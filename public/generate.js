@@ -74,7 +74,7 @@ function makeChart(){
           datasets: [{
             label: '',
             data: [errnos[0], errnos[1], errnos[2]],
-            backgroundColor: ['red', 'magenta', 'orange', 'green'],
+            backgroundColor: ['red', 'orange', 'yellow'],
             borderWidth: 1
           }]
         },

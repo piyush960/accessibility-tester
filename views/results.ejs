@@ -9,25 +9,16 @@
     <title>results</title>
 </head>
 <body>
-    <header>
-        <div class="container">
-            <a href="/"><h2 class="logo">Acc<span>Tester</span></h2></a>
-            <nav class="navbar">
-                <ul>
-                    <li><a href="/">Home</a></li>
-                    <li><a href="">History</a></li>
-                    <li><a href="">Login</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+    <%- include('./partials/header') %>
 
     <section class="page-info container">
         <div class="chart">
             <canvas id="doughnut"></canvas>
         </div>
-        <img src="img/acc-on-screen.jpg" alt="" class="screen">
-        <h2><%= result.documentTitle %></h2>
+        <div class="">
+            <small>showing results for...</small>
+            <h2><%= result.documentTitle %></h2>
+        </div>
     </section>
 
     <section class="results">
@@ -90,7 +81,7 @@
                             <div class="empty_head">
                                 <% result.issues.errors.empty_head.forEach( item => { %>
                                     <div class="content-box">
-                                        <h3><%= item.code %></h3>
+                                        <h3><span><%= item.code %></span></h3>
                                         <div class="text-content">
                                             <div class="h4"><h4><%= item.context %></h4></div>
                                             <p><%= item.message %></p>
@@ -103,7 +94,7 @@
                             <div class="htmlfault">
                                 <% result.issues.errors.htmlfault.forEach( item => { %>
                                     <div class="content-box">
-                                        <h3><%= item.code %></h3>
+                                        <h3><span><%= item.code %></span></h3>
                                         <div class="text-content">
                                             <div class="h4"><h4><%= item.context %></h4></div>
                                             <p><%= item.message %></p>
@@ -116,7 +107,7 @@
                             <div class="contentIssue">
                                 <% result.issues.errors.contentIssue.forEach( item => { %>
                                     <div class="content-box">
-                                        <h3><%= item.code %></h3>
+                                        <h3><span><%= item.code %></span></h3>
                                         <div class="text-content">
                                             <div class="h4"><h4><%= item.context %></h4></div>
                                             <p><%= item.message %></p>
@@ -129,7 +120,7 @@
                             <div class="alt_missing">
                                 <% result.issues.errors.alt_missing.forEach( item => { %>
                                     <div class="content-box">
-                                        <h3><%= item.code %></h3>
+                                        <h3><span><%= item.code %></span></h3>
                                         <div class="text-content">
                                             <div class="h4"><h4><%= item.context %></h4></div>
                                             <p><%= item.message %></p>
@@ -142,7 +133,7 @@
                             <div class="obsolete_content">
                                 <% result.issues.errors.obsolete_content.forEach( item => { %>
                                     <div class="content-box">
-                                        <h3><%= item.code %></h3>
+                                        <h3><span><%= item.code %></span></h3>
                                         <div class="text-content">
                                             <div class="h4"><h4><%= item.context %></h4></div>
                                             <p><%= item.message %></p>
@@ -155,7 +146,7 @@
                             <div class="missing_alt_text">
                                 <% result.issues.errors.missing_alt_text.forEach( item => { %>
                                     <div class="content-box">
-                                        <h3><%= item.code %></h3>
+                                        <h3><span><%= item.code %></span></h3>
                                         <div class="text-content">
                                             <div class="h4"><h4><%= item.context %></h4></div>
                                             <p><%= item.message %></p>
@@ -168,7 +159,7 @@
                             <div class="tag_with_no_content">
                                 <% result.issues.errors.tag_with_no_content.forEach( item => { %>
                                     <div class="content-box">
-                                        <h3><%= item.code %></h3>
+                                        <h3><span><%= item.code %></span></h3>
                                         <div class="text-content">
                                             <div class="h4"><h4><%= item.context %></h4></div>
                                             <p><%= item.message %></p>
@@ -181,7 +172,7 @@
                             <div class="missing_attributes">
                                 <% result.issues.errors.missing_attributes.forEach( item => { %>
                                     <div class="content-box">
-                                        <h3><%= item.code %></h3>
+                                        <h3><span><%= item.code %></span></h3>
                                         <div class="text-content">
                                             <div class="h4"><h4><%= item.context %></h4></div>
                                             <p><%= item.message %></p>
@@ -194,7 +185,7 @@
                             <div class="duplicate_id">
                                 <% result.issues.errors.duplicate_id.forEach( item => { %>
                                     <div class="content-box">
-                                        <h3><%= item.code %></h3>
+                                        <h3><span><%= item.code %></span></h3>
                                         <div class="text-content">
                                             <div class="h4"><h4><%= item.context %></h4></div>
                                             <p><%= item.message %></p>
@@ -207,7 +198,7 @@
                             <div class="no_label">
                                 <% result.issues.errors.no_label.forEach( item => { %>
                                     <div class="content-box">
-                                        <h3><%= item.code %></h3>
+                                        <h3><span><%= item.code %></span></h3>
                                         <div class="text-content">
                                             <div class="h4"><h4><%= item.context %></h4></div>
                                             <p><%= item.message %></p>
@@ -220,7 +211,7 @@
                             <div class="child_semantic_meaning">
                                 <% result.issues.errors.child_semantic_meaning.forEach( item => { %>
                                     <div class="content-box">
-                                        <h3><%= item.code %></h3>
+                                        <h3><span><%= item.code %></span></h3>
                                         <div class="text-content">
                                             <div class="h4"><h4><%= item.context %></h4></div>
                                             <p><%= item.message %></p>
@@ -233,7 +224,7 @@
                             <div class="other">
                                 <% result.issues.errors.other.forEach( item => { %>
                                     <div class="content-box">
-                                        <h3><%= item.code %></h3>
+                                        <h3><span><%= item.code %></span></h3>
                                         <div class="text-content">
                                             <div class="h4"><h4><%= item.context %></h4></div>
                                             <p><%= item.message %></p>
@@ -250,7 +241,7 @@
                         <div class="warns">
                             <% result.issues.warnings.forEach( item => { %>
                                 <div class="content-box">
-                                    <h3><%= item.code %></h3>
+                                    <h3><span><%= item.code %></span></h3>
                                     <div class="text-content">
                                         <div class="h4"><h4><%= item.context %></h4></div>
                                         <p><%= item.message %></p>
@@ -265,7 +256,7 @@
                         <div class="warns">
                             <% result.issues.notices.forEach( item => { %>
                                 <div class="content-box">
-                                    <h3><%= item.code %></h3>
+                                    <h3><span><%= item.code %></span></h3>
                                     <div class="text-content">
                                         <div class="h4"><h4><%= item.context %></h4></div>
                                         <p><%= item.message %></p>

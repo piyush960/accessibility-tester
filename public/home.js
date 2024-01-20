@@ -30,7 +30,7 @@ form.addEventListener('submit', async (e) => {
       if(result.success){
         document.querySelector('.loading-screen .scan-success').style.display = 'block';
         document.querySelector('.loading-screen .scanning').style.display = 'none';
-        setTimeout(redirect, 1000, '/results');
+        setTimeout(redirect, 1000, `/results?name=${result.name}`);
       }else{
         set();
         showErr(result.msg);
