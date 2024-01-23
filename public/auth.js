@@ -6,7 +6,7 @@ signupForm.addEventListener('submit', async (e) => {
 
     const username = signupForm.username.value.trim();
     const email = signupForm.email.value.trim();
-    const password = signupForm.password.value.trim();
+    const password = signupForm.password.value;
     clearErrors(signupForm);
     clearSuccess(signupForm);
     try{
@@ -38,7 +38,7 @@ loginForm.addEventListener('submit', async (e) => {
     e.preventDefault();
 
     const emailname = loginForm.email.value.trim();
-    const password = loginForm.password.value.trim();
+    const password = loginForm.password.value;
     clearErrors(loginForm);
     clearSuccess(loginForm);
     try{
