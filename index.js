@@ -122,7 +122,6 @@ app.post('/results', checkUser, async (req, res) => {
 
     try{
         const result = await pa11y(url , {
-            screenCapture: `${__dirname}/my-screen-capture.png`,
             includeNotices: true,
             includeWarnings: true,
         })
