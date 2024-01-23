@@ -129,7 +129,7 @@ app.post('/results', checkUser, async (req, res) => {
         const report = parseData(result);
         result.issues = report;
         if(res.locals.user){
-            await Report.findOneAndUpdate({ result, userid, name}, {}, {upsert: true});
+            await Report.findOneAndUpdate({ userid, name }, { result }, {upsert: true});
         }else{
             await Report.create({result, name});
         }

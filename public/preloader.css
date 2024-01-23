@@ -3,7 +3,7 @@
   z-index: 999;
   width: 20px;
   aspect-ratio: 1;
-  background: #2556b0;
+  background: #C70039;
   box-shadow: 0 0 60px 15px #25b09b;
   transform: translate(-80px);
   clip-path: inset(0);
@@ -33,16 +33,17 @@
 
 .loading-screen h3{
   font-weight: 500;
+  color: #141E46;
 }
 
 .loading-screen button{
   padding: 10px 24px;
   outline: none;
-  background-color: #0066FF;
+  background-color: #C70039;
   border: none;
   font-size: 1.2rem;
   font-weight: 600;
-  color: #fff;
+  color: #FFF5E0;
   border-radius: 20px;
   cursor: pointer;
   transition: 0.2s ease-in;
@@ -54,7 +55,7 @@
 }
 
 .loading-screen button:hover{
-  background-color: #4FACF7;
+  background-color: #FF6969;
 }
 
 @keyframes l4-1 {

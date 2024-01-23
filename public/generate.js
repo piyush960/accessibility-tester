@@ -49,11 +49,11 @@ function removeActive(){
     })
 }
 
-const accordians = document.querySelectorAll('.results .accordian .content-box');
+const accordians = document.querySelectorAll('.results .accordian .content-box h3');
 
 accordians.forEach(acc => {
     acc.addEventListener('click', e => {
-        acc.classList.toggle('active');
+        acc.parentElement.classList.toggle('active');
     })
 })
 
@@ -67,6 +67,16 @@ function makeChart(){
         errnos.push(Number(link.dataset.l.replace(/\D/g, '')))
     })
 
+    const ShadowPlugin = {
+        beforeDraw: (chart, args, options) => {
+          const { ctx } = chart;
+          ctx.shadowColor = "rgba(0, 0, 0, 0.5)";
+          ctx.shadowBlur = 10;
+          ctx.shadowOffsetX = 4;
+          ctx.shadowOffsetY = 4;
+        },
+      };
+
     new Chart(ctx, {
         type: 'doughnut',
         data: {
@@ -74,8 +84,9 @@ function makeChart(){
           datasets: [{
             label: '',
             data: [errnos[0], errnos[1], errnos[2]],
-            backgroundColor: ['red', 'orange', 'yellow'],
-            borderWidth: 1
+            backgroundColor: ['#C70039', '#FF9843', '#F8E559'],
+            borderWidth: 0,
+            
           }]
         },
         options: {
@@ -84,7 +95,8 @@ function makeChart(){
               beginAtZero: true
             }
           }
-        }
+        },
+        plugins:[ShadowPlugin]
     });
 }
 

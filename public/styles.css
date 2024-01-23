@@ -2,8 +2,8 @@
 
 
 :root{
-    --light-color: #4FACF7;
-    --dark-color: #0066FF;
+    --light-color: #FF6969;
+    --dark-color: #C70039;
 }
 
 
@@ -29,7 +29,9 @@
     background: rgba(253, 147, 147, 0.4); 
 }
 
-
+.showcase section.container #form input:-webkit-autofill { 
+    -webkit-background-clip: text;
+}
 
 *{
     margin: 0;
@@ -42,6 +44,7 @@ html, body{
     font-family: 'Poppins', sans-serif;
     overflow-x: hidden !important;
     margin: auto !important;
+    background-color: #c6c6c6;
 }
 
 ul{
@@ -82,11 +85,7 @@ header .container{
 }
 
 a .logo{
-    color: #000;
-}
-
-a .logo span{
-    color: var(--dark-color);
+    width: 220px;
 }
 
 header .navbar ul{
@@ -97,7 +96,7 @@ header .navbar ul{
 
 header .navbar ul li a{
     margin-left: 100px;
-    color: #fff;
+    color: #FFF5E0;
     transition: color 0.2s ease-in-out;
 }
 
@@ -123,6 +122,8 @@ header .navbar ul li a:hover{
 .showcase section.container h1{
     font-size: 2.5rem;
     margin-bottom: 20px;
+    width: fit-content;
+    color: #141E46;
     word-spacing: 5px;
     line-height: 1.2;
 }
@@ -130,7 +131,12 @@ header .navbar ul li a:hover{
 .showcase section.container p{
     font-size: 1.2rem;
     line-height: 1.1;
+    color: #C70039;
     margin: 10px 0;
+}
+
+.showcase section.container #form{
+    width: 105%;
 }
 
 .showcase section.container #form input{
@@ -138,7 +144,8 @@ header .navbar ul li a:hover{
     border: none;
     padding: 17px 30px;
     width: 70%;
-    background: #c6c6c6;
+    background: transparent;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
     font-family: 'Poppins', sans-serif;
     font-size: 1.2rem;
     margin: 20px 0; 
@@ -146,7 +153,7 @@ header .navbar ul li a:hover{
 }
 
 .showcase section.container #form input::placeholder{
-    color: #000;
+    color: #333;
     font-size: 0.8rem;
 }
 
@@ -168,7 +175,7 @@ header .navbar ul li a:hover{
 
 form small.error-msg{
     width: 100%;
-    color: #cd3939;
+    color: #FF6969;
     display: block;
     padding: 10px;
     font-size: 0.8rem;
@@ -210,14 +217,16 @@ form small.error-msg{
 
 .what .container .text-content h2{
     font-size: 1.9rem;
+    color: #141E46;
     margin: 10px 0;
     font-weight: 600;
 }
 
 .what .container .text-content p{
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     margin: 20px 0;
-    font-weight: 500;
+    color: #333;
+    font-weight: 400;
 }
 
 .features{
@@ -231,6 +240,7 @@ form small.error-msg{
 .features h2{
     position: absolute;
     left: 50%;
+    color: #141E46;
     transform: translate(-50%, -100px);
     font-size: 2rem;
     word-spacing: 5px;
@@ -249,6 +259,7 @@ form small.error-msg{
     height: 380px;
     display: flex;
     flex-direction: column;
+    color: #333;
     justify-content: space-around;
     align-items: center;
     text-align: center;
@@ -272,6 +283,7 @@ form small.error-msg{
 
 .feature-cards .feature-card:hover {
     transform: scale(0.9);
+    color: #141E46;
 }
 
 
@@ -306,6 +318,7 @@ form small.error-msg{
 
 .importance .container h2{
     font-size: 2.2rem;
+    color: #141E46;
     margin-bottom: 20px;
 }
 
@@ -315,13 +328,14 @@ form small.error-msg{
     margin-bottom: 20px;
     margin-left: 20px;
     font-size: 1.3rem;
+    color: #333;
     cursor: pointer;
     transition: 0.2s ease-in-out;
     position: relative;
 }
 
 .importance .container li .description{
-    background: #82b7e3;
+    background: #FF6969;
     padding: 24px;
     text-align: center;
     box-shadow: -5px 5px 10px rgba(0, 0, 0, 0.4);
@@ -338,12 +352,12 @@ form small.error-msg{
 }
 
 .importance .container li:hover{
-    color: #0066FF;
+    color: #141E46;
 }
 
 .importance .container li:hover .description{
     transform: translateX(0);
-    color: #000;
+    color: #FFF5E0;
 }
 
 .choose{
@@ -357,6 +371,7 @@ form small.error-msg{
 .choose h2{
     position: absolute;
     left: 50%;
+    color: #141E46;
     font-size: 1.7rem;
     transform: translate(-50%, -100px);
 }
@@ -381,7 +396,7 @@ form small.error-msg{
 }
 
 .text-content .content1, .text-content .content2, .text-content .content3{
-    background: #82b7e3;
+    background: #FF6969;
     padding: 10px;
     width: 300px;
     height: 300px;
@@ -389,6 +404,7 @@ form small.error-msg{
     display: flex;
     align-items: center;
     justify-content: center;
+    color: #FFF5E0;
     flex-direction: column;
     border-radius: 50%;
     cursor: pointer;
@@ -418,8 +434,8 @@ form small.error-msg{
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-    color: #fff;
-    background-color: #0066FF;
+    color: #FFF5E0;
+    background-color: #141E46;
 }
 
 .footer.current{
@@ -438,6 +454,15 @@ form small.error-msg{
     min-height: calc(100vh - 600px);
 }
 
+.footer{
+    overflow: hidden;
+}
+
+.footer .container{
+    text-align: center;
+    transform: translateY(50px);
+}
+
 
 .footer h2{
     font-size: 1.8rem;
@@ -450,7 +475,7 @@ form small.error-msg{
 }
 
 .footer .container p a{
-    color: #000;
+    color: #000000;
     margin: 0 10px;
 }
 
@@ -462,8 +487,9 @@ form small.error-msg{
 
 
 .footer .container p a i:hover{
-    color: aqua;
+    color: #C70039;
 }
+
 
 
 
@@ -515,8 +541,13 @@ section.page-info{
     width: 100%;
 }
 
+.page-info small{
+    color: #C70039;
+}
+
 .page-info h2{
     grid-column: 1/3;
+    color: #141E46;
 } 
 
 
@@ -527,7 +558,8 @@ section.results{
     padding: 0 2%;
     grid-template-columns: 0.3fr 1fr;
     grid-template-rows: 1fr;
-    border-top: 1px solid #333;
+    border-top: 1px solid #141E46;
+    margin-bottom: 8px;
 }
 
 .results .navigator{
@@ -545,7 +577,7 @@ section.results{
     justify-content: flex-start;
     padding: 50px 0;
     height: 100%;
-    background: #c6c6c6;
+    background: #141E46;
 }
 
 .results nav a{
@@ -554,24 +586,30 @@ section.results{
     display: flex;
     justify-content: space-between;
     align-items: center;
+    color: #FFF5E0;
     cursor: pointer;
+    margin-left: 2px;
     font-size: 1.1rem;
 }
 
 .results nav a:first-child div{
     padding: 9px;
+    
 }
 
 .results nav a.active{
-    background-color: #96b6e8;
-    color: #fff;
+    background-color: #c6c6c6;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    color: #141E46;
 }
 
 .results nav a span{
     padding: 10px;
     font-size: 16px;
     text-align: center;
-    background: #d26666;
+    background: #C70039;
+    color: #FFF5E0;
     border-radius: 10px;
     margin-left: 5px;
 }
@@ -585,7 +623,8 @@ section.results{
     position: absolute;
     top: 100%;
     left: 5%;
-    background: #fff;
+    background: #FFF5E0;
+    border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);  
     opacity: 0;
     transform: translateY(10px);
@@ -603,7 +642,7 @@ section.results{
 
 .dropdown .error-links li{
     padding: 0 15px;
-    border-bottom: 1px solid #000;
+    border-bottom: 1px solid #141E46;
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -618,9 +657,10 @@ section.results{
     min-width: 40px;
     text-align: center;
     margin-left: 50px;
-    background-color: #d26666;
+    background-color: #C70039;
     margin: 5px 0;
     border-radius: 10px;
+    color: #FFF5E0;
     font-size: 15px;
 }
 
@@ -631,13 +671,20 @@ section.results{
 .dropdown .error-btn span i{
     height: 100%;
     margin-top: 9px;
+    color: #FFF5E0;
+}
+
+.results nav a.active span i{
+    color: #141E46;
 }
 
 .dropdown .error-btn span i:last-child, .dropdown .error-btn span.show-spn i:first-child{
     display: none;
+    color: #141E46;
 }
 
 .dropdown .error-btn span.show-spn i:last-child{
+    color: #141E46;
     display: block;
 }
 
@@ -647,12 +694,13 @@ section.results{
 
 
 .dropdown .error-links li:hover{
-    background: #4FACF7;
+    background: #FF6969;
+    border-radius: 10px;
 }
 
 .results .result-display{
     grid-column: 2/3;
-    background-color: #96b6e8;
+    background-color: #c6c6c6;
     overflow-y: scroll;
 }
 
@@ -673,12 +721,14 @@ section.results{
     position: relative;
     font-weight: 500;
     padding: 10px;
-    background: #0066FF;
+    background: #c6c6c6;
     overflow-wrap: break-word;
-    color: #fff;
+    color: #141E46;
+    box-shadow: 0 0 5px #C70039;
     z-index: 1;
     cursor: pointer;
     display: flex;
+    border-radius: 5px;
     justify-content: space-between;
     align-items: center;
     column-gap: 10px;
@@ -705,9 +755,10 @@ section.results{
     position: relative;
     height: 0;
     overflow: hidden;
-    background: #4FACF7;
-    color: #fff;
+    background: #c6c6c6;
+    color: #141E46;
     transition: 0.4s ease-in;
+    box-shadow:  0 0 5px #C70039;
     overflow-y: auto;
 }
 
@@ -716,15 +767,26 @@ section.results{
     margin: 10px 0;
     margin-left: 10px;
     word-break: break-all;
+    color: #FFF5E0;
 }
 
 .accordian .content-box h4{
     width: 100%;
     padding: 10px 20px;
-    background: #333;
-    border-radius: 8px;
+    background: #141E46;
+    font-weight: 400;
+    margin-bottom: 20px;
+    border-radius: 6px;
     font-size: 16px;
     font-weight: 500;
+}
+
+.accordian .content-box h5{
+    font-weight: 500;
+    margin-bottom: 10px;
+    color: #C70039;
+    margin-left: 10px;
+
 }
 
 .accordian .content-box p{
@@ -735,7 +797,15 @@ section.results{
 .accordian .content-box.active .text-content{
     height: auto;
     padding: 30px 10px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
 }
+
+.accordian .content-box.active h3{
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
 
 
 .accordian .content-box.active h3::before{
@@ -746,6 +816,7 @@ section.results{
 
 section.history{
     margin: 40px auto;
+    height: 100%;
 }
 
 .history .hist-cards{
@@ -757,15 +828,16 @@ section.history{
 
 .history .hist-cards .hist-card{
     margin: 0 20px;
-    background: #fff;
+    background: #FFF5E0;
     max-width: 350px;
     padding: 10px;
     border-radius: 10px;
     min-height: 210px;
+    color: #141E46;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
+    box-shadow: 1px 1px 5px #C70039;
     transition: transform 0.2s ease-in-out;
     position: relative;
 }
@@ -784,10 +856,11 @@ section.history{
 .hist-card > p{
     font-size: 0.9rem;
     margin-bottom: 10px;
+    color: #141E46;
 }
 
 .hist-card > p span{
-    color: #999;
+    color: #C70039;
 }
 
 .hist-card .summary{
@@ -807,19 +880,19 @@ section.history{
 }
 
 .hist-card .summary p:first-child i{
-    color: red;
+    color: #C70039;
     border: 1px solid #333;
     border-radius: 50%;
 }
 
 .hist-card .summary p:nth-child(2) i{
-    color: orange;
+    color: #FF9843;
     border: 1px solid #333;
     border-radius: 50%;
 }
 
 .hist-card .summary p:last-child i{
-    color: yellow;
+    color: #F8E559;
     border: 1px solid #333;
     border-radius: 50%;
 }
@@ -827,6 +900,7 @@ section.history{
 .hist-card a{
     cursor: pointer;
     margin-bottom: 10px;
+    color: #141E46;
 }
 
 .hist-card a:hover i{
@@ -838,7 +912,7 @@ section.history{
     top: 5%;
     right: 5%;
     padding: 10px;
-    background: #cd3939;
+    background: #C70039;
     color: #fff;
     border-radius: 10px;
 }
@@ -944,18 +1018,31 @@ section.history{
 
    .showcase{
         background-image: none;
-        background-color: var(--dark-color);
         height: auto;
    }
 
+
    header .navbar ul li a.current, header .navbar ul li a:hover{
-        color: #fff;
+        color: #141E46;
     
+    }
+
+    header a .logo{
+        margin-bottom: 10px;
+    }
+
+    #container{
+        display: none;
     }
    
 
    .showcase section.container h1, .showcase section.container p{
-        color: #fff;
+        text-align: center;
+        width: 100%;
+   }
+
+   .showcase section.container h1{
+    margin-top: 20px;
    }
 
    .showcase .left-content{
@@ -964,6 +1051,8 @@ section.history{
 
    .showcase section.container #form input{
     padding: 10px 20px;
+    box-shadow: 0 0 5px #C70039;
+    border-radius: 10px;
     width: 90%;
    }
 
@@ -977,7 +1066,9 @@ section.history{
 
    .showcase section.container #form button{
     padding: 10px 24px;
-        background-color: #82b7e3;
+        background-color: #C70039;
+        border-radius: 10px;
+        margin-top: 10px;
    }
 
    .showcase section.container{
@@ -1001,15 +1092,24 @@ section.history{
    }
 
    a .logo span{
-    color: #fff;
+    color: #FFF5E0;
    }
 
 
    header .navbar ul li a{
     margin: 0;
     padding: 10px 20px;
-    background-color: #4FACF7;
-    border-radius: 10px;
+    background-color: #C70039;
+    }
+
+    header .navbar ul li:first-child a{
+        border-top-left-radius: 10px;
+        border-bottom-left-radius: 10px;
+    }
+
+    header .navbar ul li:last-child a{
+        border-top-right-radius: 10px;
+        border-bottom-right-radius: 10px;
     }
 
    .showcase section.container img{
@@ -1045,6 +1145,7 @@ section.history{
    .features div h2{
     width: 100%;
    }
+
 
    .importance{
     height: fit-content;
@@ -1100,6 +1201,7 @@ section.history{
 
    section.results{
     display: block;
+    overflow-y: scroll;
    }
 
    .results .navigator{
@@ -1113,10 +1215,16 @@ section.history{
     overflow-x: scroll;
     overflow-y: hidden;
    }
-
+   
+   
    
     .results nav::-webkit-scrollbar{
         display: none;
+    }
+
+    .results nav a.active{
+        border-radius: 0;
+        padding: 12px 20px;
     }
 
     
@@ -1128,6 +1236,11 @@ section.history{
         font-size: 0.9rem;
     }
 
+    .accordian .content-box h4{
+        font-size: 14px;
+        font-weight: 400;
+    }
+
     .text-content .content1, .text-content .content2, .text-content .content3{
         height: auto;
         max-width: 300px;
@@ -1137,7 +1250,8 @@ section.history{
         font-size: 1.4rem;
         margin-bottom: 30px;
     }
-    
+
+
     .footer .container span{
         display: none;
     }

@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="preloader.css">
+    <link rel="stylesheet" href="anim.css">
     <title>Accessibility Tester</title>
 </head>
 <body>
@@ -17,12 +18,14 @@
         <h3 class="scan-success">Scan Successfull <i class="fa-regular fa-face-smile"></i></h3>
         <button id="abort-btn">Stop Scanning</button>
     </div>
-    
+    <div id="container">
+        
+    </div>
     <div class="showcase">
         <%- include('./partials/header') %>
         <section class="container">
             <div class="left-content" data-aos="fade-up" data-aos-anchor-placement="center-bottom">
-                <h1>Welcome to AccessCheck</h1>
+                <h1>Welcome to AxessAudit</h1>
                 <p>Your Gateway to Website Accessibility Testing</p>
                 <form action="#" id="form" >
                     <small class="error-msg"></small>
@@ -33,18 +36,23 @@
 
                 </form>
             </div>
-            <img src="img/wheel.png" alt="">
+            <img src="img/showimg.svg" alt="">
         </section>
         
     </div>
+    <filter id="goo">
+        <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
+        <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7" result="goo" />
+        <feBlend in="SourceGraphic" in2="goo" />
+    </filter>
 
     <section class="what">
       <div class="container">
             <img src="img/question.svg" alt="" data-aos="fade-right">
             <div class="text-content" data-aos="fade-left">
-                <h2>What is AccessCheck?</h2>
+                <h2>What is AxessAudit?</h2>
                 <p>
-                    AccessCheck is a comprehensive accessibility testing tool designed to ensure that every digital space is inclusive and accessible to all users, regardless of their abilities or disabilities. Empower your team to create a more inclusive online experience with our user-friendly platform
+                    AxessAudit is a comprehensive accessibility testing tool designed to ensure that every digital space is inclusive and accessible to all users, regardless of their abilities or disabilities. Empower your team to create a more inclusive online experience with our user-friendly platform
                 </p>
             </div>
         </div>
@@ -93,7 +101,7 @@
 
     <section class="importance">
         <div class="container">
-            <img src="img/man-on-sofa.png" alt="" data-aos="fade-left">
+            <img src="img/impwhy.svg" alt="" data-aos="fade-left">
             <div class="text-content" data-aos="fade-right">
                 <h2>Why is Accessibility Testing Important?</h2>
                 <ul>
@@ -125,7 +133,7 @@
     </section>
 
     <section class="choose">
-        <h2>Why Choose AccessCheck?</h2>
+        <h2>Why Choose AxessAudit?</h2>
         <div class="container">
             <img src="img/choose.svg" alt="" data-aos="fade-right">
             <div class="text-content" data-aos="fade-left">
@@ -166,6 +174,7 @@
             easing: 'ease-in-cubic',
         });
     </script>
+    <script src="anim.js"></script>
 
 </body>
 </html>

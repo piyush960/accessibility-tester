@@ -11,6 +11,7 @@ const signal = controller.signal;
 form.addEventListener('submit', async (e) => {
   e.preventDefault();
   const url = form.url.value.trim();
+  document.getElementById('container').style.display = 'none';
   removeErr();
   if(url){
     reset();

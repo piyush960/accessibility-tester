@@ -1,0 +1,19 @@
+
+#container {
+    -webkit-filter: url("#goo");
+            filter: url("#goo");
+    background:transparent;
+    height: 100%;
+    width: 100%;
+    overflow:visible;
+  }
+  .blob {
+    background:#FF2D6A;
+    opacity: 0.1;
+    border-radius:999px;
+    position:fixed;
+    -webkit-filter: url("#goo");
+            filter: url("#goo");
+        z-index: -1;
+  }
+
