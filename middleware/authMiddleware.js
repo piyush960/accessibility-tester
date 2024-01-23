@@ -19,7 +19,6 @@ const requireAuth = (req, res, next) => {
 
 const checkUser = (req, res, next) => {
     const token = req.cookies.jwt;
-
     if(token){
         jwt.verify(token, 'accessibility tester website', async (err, decodedToken) => {
             if(err){

@@ -25,9 +25,10 @@ app.set('view engine', 'ejs');
 app.use(express.static('public'));
 app.use(express.json());
 app.use(cookieParser());
+app.get('*', checkUser);
+
 app.use(authRoutes);
 
-app.get('*', checkUser);
 
 app.get('/', async (req, res) => {
     await Report.deleteMany({ userid: { $exists: false } });

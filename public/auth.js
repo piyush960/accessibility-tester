@@ -4,9 +4,9 @@ const signupForm = document.querySelector('.signup form');
 signupForm.addEventListener('submit', async (e) => {
     e.preventDefault();
 
-    const username = signupForm.username.value;
-    const email = signupForm.email.value;
-    const password = signupForm.password.value;
+    const username = signupForm.username.value.trim();
+    const email = signupForm.email.value.trim();
+    const password = signupForm.password.value.trim();
     clearErrors(signupForm);
     clearSuccess(signupForm);
     try{
@@ -37,8 +37,8 @@ signupForm.addEventListener('submit', async (e) => {
 loginForm.addEventListener('submit', async (e) => {
     e.preventDefault();
 
-    const emailname = loginForm.email.value;
-    const password = loginForm.password.value;
+    const emailname = loginForm.email.value.trim();
+    const password = loginForm.password.value.trim();
     clearErrors(loginForm);
     clearSuccess(loginForm);
     try{

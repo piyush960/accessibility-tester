@@ -40,8 +40,12 @@ const generateToken = (id) => {
 }
 
 const login_get = (req, res) => {
+    if(!res.locals.user){
+        res.status(200).render('login');
 
-    res.status(200).render('login');
+    }else{
+        res.status(200).redirect('/');
+    }
 }
 
 const login_post = async (req, res) => {
